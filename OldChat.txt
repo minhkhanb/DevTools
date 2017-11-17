@@ -1,0 +1,259 @@
+[11/29/2016 8:41:31 AM] Ngo Duy Tuyen: hi, Quốc vs Lâm cài them mấy  cái này nha
+[11/29/2016 8:41:38 AM] Ngo Duy Tuyen: https://developer.android.com/ndk/downloads/index.html
+[11/29/2016 8:42:34 AM] Ngo Duy Tuyen: https://developer.android.com/studio/index.html
+[11/29/2016 8:43:25 AM] Ngo Duy Tuyen: chú ý để tiện làm việc vs engine của cty thì nên cài theo đường dẫn của mình
+[11/29/2016 8:44:09 AM] Ngo Duy Tuyen: tức là tạo them 1 thư mục android cho thư mục chứa DevTools
+[11/29/2016 8:44:23 AM] Ngo Duy Tuyen: sau đó xả nén cái ndk vào thư mục này
+[11/29/2016 8:45:17 AM] Ngo Duy Tuyen: còn android studio thì cài đến bước set đường dẫn cho android sdk thì cũng trỏ vào thư mục android hồi nãy
+[11/29/2016 8:49:33 AM] Ngo Duy Tuyen: https://gradle.org/gradle-download/
+[11/29/2016 8:50:28 AM] Ngo Duy Tuyen: cái gradle này thì Q vs L xuống chỗ PREVIOUS RELEASES chon version 2.14.1 thôi nha mới quá sợ build lỗi
+[11/29/2016 8:51:03 AM] Ngo Duy Tuyen: down cái loại Binary only distribution cho nó nhẹ
+[11/29/2016 8:51:49 AM] Ngo Duy Tuyen: xong thì tạo them 1 thư mục 'gradle' ngang cấp vs thư mục 'android' hồi nãy
+[11/29/2016 8:51:57 AM] Ngo Duy Tuyen: xả nén nó zô đó
+[11/29/2016 8:58:44 AM] Ngo Duy Tuyen: Sau khi cài xong thì vào environment Variables xem có mấy mục này chưa chưa có thì them vào nha: Chỗ System variable: + ANDROID_HOME: Đường dẫn tới thư mục: ./Android/android-sdk-r...
++NDK_HOME: .../Android/android-ndk
++ GRADLE_HOME: .../gradle/gradle-2.14.1
++JAVA_SDK:
++JAVA_HOME:
++JRE_HOME:
+[11/29/2016 9:00:43 AM] Ngo Duy Tuyen: - Chỗ Path thì them:
+ +...\Android\android-sdk\tools
+ +...\Android\android-ndk-r12b
+ +...\Android\android-sdk\platform-tools
+ +...\gradle\gradle-2.14.1\bin
+[11/29/2016 9:01:05 AM] Ngo Duy Tuyen: nên cập nhật java mới nhất luôn nha
+[11/29/2016 9:37:36 AM] Lam Nguyen: ua minh tro ca 2 cai duong dan studio va SDK vao android luon ha Tuyen
+[11/29/2016 9:38:12 AM] Ngo Duy Tuyen: studio cai ở đâu cũng được Lâm, Quan trọng là cái sdk thôi
+[11/29/2016 9:38:19 AM] Lam Nguyen: oke
+[11/29/2016 9:40:05 AM] Lam Nguyen: ua sao no keu phai cai SDK vao folder empty no moi chiu
+[11/29/2016 9:40:17 AM] Lam Nguyen: ma trong android dang co chua cai ndk roi
+[11/29/2016 9:40:29 AM] Lam Nguyen: gio minh tao folder moi cho no hay sao
+[11/29/2016 9:42:20 AM] Ngo Duy Tuyen: Lâm lùi lại 1 bước, xong tới, copy tên cái thư mục sdk mặc định của nó rồi tạo thư mục mới trong android tên going vậy, còn ko được thì tạo thư mục 'android-sdk' nằm trong Android rồi trỏ vô đó,
+[11/29/2016 9:42:38 AM] Lam Nguyen: oke
+[11/29/2016 10:20:56 AM] Lam Nguyen: xong may cai do roi minh lam j tiep theo nek
+[11/29/2016 10:22:38 AM] Ngo Duy Tuyen: oke, giờ L zô cái trunk ThisXMas, src/_android chạy cmd gõ gradle build thử xem nó có chạy ko
+[11/29/2016 10:24:35 AM] Lam Nguyen: no bao build successful roi
+[11/29/2016 10:26:24 AM] Ngo Duy Tuyen: ghe vậy zậy là oke rồi, giờ thì tìm hiểu sơ qua về thư mục _android thôi
+[11/29/2016 10:26:55 AM] Ngo Duy Tuyen: cái build sau khi build thành công sẽ nằm ở ...\_android\build\outputs\apk
+[11/29/2016 10:27:14 AM] Ngo Duy Tuyen: mặc định là sẽ build ra 2 file 1 debug, 1 release
+[11/29/2016 10:28:04 AM] Ngo Duy Tuyen: build release thì phải nhờ a Duy sign lại rồi mới cài zô device được build này dung để submit lên store
+[11/29/2016 10:28:25 AM] Ngo Duy Tuyen: còn khi đang dev thì mình thường dung build debug
+[11/29/2016 10:29:16 AM] Ngo Duy Tuyen: muốn cài lên device thì L run cmd install.bat trong ./_android
+[11/29/2016 10:29:45 AM] Ngo Duy Tuyen: nhớ là phải cắm device android vào :D
+[11/29/2016 10:30:44 AM] Ngo Duy Tuyen: và device android thì phải bật tính năng developermode
+[11/29/2016 10:31:19 AM] Lam Nguyen: van de la gio ko thay cai thu muc build nao trong _android nek
+[11/29/2016 10:32:11 AM] Ngo Duy Tuyen: mỗi devices/phiên bản android bật hơi khác nhau nhưng chung quy là vào setting->about->build version (click zô khoảng 5-7 lần)
+[11/29/2016 10:32:13 AM] Ngo Duy Tuyen: vãi
+[11/29/2016 10:32:28 AM] Ngo Duy Tuyen: zậy nó báo success gì vậy?
+[11/29/2016 10:33:05 AM] Lam Nguyen: no bao build successful
+[11/29/2016 10:33:09 AM] Lam Nguyen: total time
+[11/29/2016 10:33:12 AM] Lam Nguyen: vay thoi
+[11/29/2016 10:34:10 AM] Ngo Duy Tuyen: oh, Lâm tìm ngay đường dẫn _android của project hay ở đâu?
+[11/29/2016 10:34:29 AM] Lam Nguyen: dung roi
+[11/29/2016 10:34:34 AM] Lam Nguyen: src/_android
+[11/29/2016 10:34:44 AM] Lam Nguyen: ko thay cai build nao trong nay luon
+[11/29/2016 10:34:56 AM] Lam Nguyen: sau khi build chi thay cai gradle thoi ha
+[11/29/2016 10:44:34 AM] Lam Nguyen: no bao fail roi tuyen oi
+[11/29/2016 10:44:44 AM] Ngo Duy Tuyen: chụp hình đi Lâm
+[11/29/2016 10:44:56 AM] Lam Nguyen: oke
+[11/29/2016 10:47:44 AM] Ngo Duy Tuyen: Lâm thử chạy gradle build lại lần nữa nha, mấy cái này nhiều khi do mạng nó ko download được đó
+[11/29/2016 10:48:07 AM] Lam Nguyen: oke
+[11/29/2016 10:49:48 AM] Lam Nguyen: ua cai android studio minh co can active gi ko
+[11/29/2016 10:50:10 AM] Ngo Duy Tuyen: ko đâu, nó free mà
+[11/29/2016 10:50:35 AM] Lam Nguyen: oh
+[11/29/2016 10:50:47 AM] Lam Nguyen: co ve nhu bi loi tu no thi phai do
+[11/29/2016 10:50:52 AM] Lam Nguyen: de coi lai xem sao
+[11/29/2016 10:51:07 AM] Ngo Duy Tuyen: cái android studio đó dung làm IDE khi mình muốn sửa code bên java thôi, còn bình thường cũng ít xài
+[11/29/2016 10:51:16 AM] Ngo Duy Tuyen: chạy lại nó báo lỗi ra sao Lâm
+[11/29/2016 10:51:34 AM] Lam Nguyen: cung y nhu hoi nay ha
+[11/29/2016 10:51:47 AM] Lam Nguyen: ma lan nay no ko co download cai gi het
+[11/29/2016 10:52:00 AM] Lam Nguyen: build cai la fail ngay
+[11/29/2016 10:53:24 AM] Lam Nguyen: ah cai nay no chui do chua cai may cai components cua studio ak
+[11/29/2016 10:53:30 AM] Lam Nguyen: de cai lai xem sao
+[11/29/2016 10:54:48 AM] Ngo Duy Tuyen: zậy giờ Lâm zô chỗ thư mục android-sdk đó
+[11/29/2016 10:55:12 AM] Ngo Duy Tuyen: chạy cái SDK Manager.exe lên
+[11/29/2016 10:56:50 AM] Ngo Duy Tuyen: check thử cái Android SDK Build-tools 24.0.2 xem đã installed going vầy chưa
+[11/29/2016 10:57:31 AM] Ngo Duy Tuyen: chưa thì check zô nó rồi install nha
+[11/29/2016 10:58:00 AM] Lam Nguyen: oke
+[11/29/2016 11:38:24 AM] Lam Nguyen: van ko dc tuyen oi
+[11/29/2016 11:38:47 AM] Ngo Duy Tuyen: nó báo lỗi khác hay vẫn lỗi đó Lâm?
+[11/29/2016 11:38:54 AM] Lam Nguyen: van cai loi do
+[11/29/2016 11:38:56 AM] Lam Nguyen: :)
+[11/29/2016 2:10:22 PM] Lam Nguyen: ua vay gio lam j tiep theo tuyen oi
+[11/29/2016 2:10:29 PM] Lam Nguyen: build success roi
+[11/29/2016 2:17:21 PM] Ngo Duy Tuyen: đỉnh zậy giờ tìm hiểu mấy cái trong _android thôi
+[11/29/2016 2:18:18 PM] Ngo Duy Tuyen: à build data cho android thì đơn giản là going build data bình thường, sau đó trong file resource.rml thì mình add them version android
+[11/29/2016 2:19:44 PM] Ngo Duy Tuyen: trong hàm OnScreenChange nhớ kiểm tra lại version
+[11/29/2016 2:21:12 PM] Ngo Duy Tuyen: lưu ý là device android rất nhiều loại màn hình nên mình phải dung kiểu port có dùng engine scale và measure
+[11/29/2016 2:21:58 PM] Ngo Duy Tuyen: bật engine scale thì set đối số thứ 4 là true cho hàm này AlignmentContext(game_align, dvsize, curr_ver, true, _HCENTER);
+[11/29/2016 2:23:47 PM] Ngo Duy Tuyen: data game sẽ được copy vào ...\_android\assets bang cách chạy deploy_data_android.bat ở thư mục trunk
+[11/29/2016 2:26:37 PM] Ngo Duy Tuyen: android sẽ có 2 phần code là code c++ và java
+[11/29/2016 2:27:05 PM] Ngo Duy Tuyen: code c++ sẽ được build bang android-ndk
+[11/29/2016 2:27:39 PM] Ngo Duy Tuyen: phần này mình config trong thư mục \_android\jni
+[11/29/2016 2:29:19 PM] Ngo Duy Tuyen: trong thư mục này đối với riêng từng thì phần core không cần chỉnh
+[11/29/2016 2:30:43 PM] Ngo Duy Tuyen: file Application.mk dòng đầu quan trong vì dùng để xác định mình muốn build cho android từ version nào trở đi
+[11/29/2016 2:31:47 PM] Ngo Duy Tuyen: file Android.mk là nơi để mình config cho việc build c++
+[11/29/2016 2:32:28 PM] Ngo Duy Tuyen: cái này thì những file cpp nào của game mình sẽ add vào đây để nó build
+[11/29/2016 2:36:39 PM] Ngo Duy Tuyen: những thư viện cần thiết của lib bên c++ thì mặc định a Duy đã build sẵn ra file có đuôi .so (going như là pineengine hay freetype) mình chỉ việc copy bỏ vào thư mục ..\_android\libs\armeabi là nó tự hiểu. Mấy lib này thì mình đã có code tự động copy khi chạy gradle build
+[11/29/2016 2:39:15 PM] Ngo Duy Tuyen: phần code java thì sẽ nằm trong thư mục ...\_android\src
+[11/29/2016 2:40:29 PM] Ngo Duy Tuyen: lưu ý là bên java thì cấu trúc thư mục cũng chính là cấu trúc package của code luôn cho nên cần tạo đúng
+[11/29/2016 2:42:46 PM] Ngo Duy Tuyen: trong thư mục này thì: 
+1. phần thư mục com dùng để add mấy thư viện build sẵn, cái này chỉ cần chú ý khi mình muốn add them feature nào đó của android mà nó cần dùng mấy lib của nó cung cấp
+[11/29/2016 2:45:54 PM] Ngo Duy Tuyen: 2. Thư mục 'pine' chứa code java của cty mình:
+   + Thư mục 'core' là của engine nên ko cần chỉnh sửa
+   + Thư mục 'game' là của project nên mình phải them, ban đầu khi tạo trunk mới nó sẽ có 1 thư mục framework, mình sẽ xóa đi, tạo thư mục tên game của mình
+[11/29/2016 2:46:49 PM] Ngo Duy Tuyen: trong thư mục tên game phải có ít nhất file MainActivity.java
+[11/29/2016 2:49:33 PM] Ngo Duy Tuyen: file này là file bắt đầu chạy của ứng dung android, mình sẽ khởi tạo các thứ cần thiết cho project trong này, file này thì L cứ đọc code chỗ nào ko hiểu thì hỏi T giải thích them chớ cũng nhiều. :)
+[11/29/2016 2:50:37 PM] Ngo Duy Tuyen: ---Thư mục ...\Android\res thì chỉ yếu là mình set icon cho game
+[11/29/2016 2:51:38 PM] Ngo Duy Tuyen: tất cả icon sẽ nằm trong thư mục mipmap... tùy kích cỡ icon, cái này sẽ có tool của bọn android hỗ trợ mình generade ra mình sẽ copy bỏ zô
+[11/29/2016 2:54:50 PM] Ngo Duy Tuyen: một thư mục quan trọng nữa trong này là ...\_android\res\values
+[11/29/2016 2:55:34 PM] Ngo Duy Tuyen: file strings.xml trong này dùng để mình set id + bật tắt các feature bên android + ads cho từng game
+[11/29/2016 2:57:25 PM] Ngo Duy Tuyen: zậy là xong các thư mục, lưu ý cấu trúc thư mục này phải giữ đúng mình mới build được
+[11/29/2016 2:58:52 PM] Ngo Duy Tuyen: còn mấy file rời nằm ngoài thư mục _android là mình dùng để config cho cả code c++ lẫn java cụ thể là config để tool gradle có thể build
+[11/29/2016 3:01:37 PM] Ngo Duy Tuyen: file AndroidManifest.xml dùng để config cho game mấy cái như package name, hay tạo them những cửa sổ cho ads, facebook hiển thị, chỉ định file bắt đầu chương trình, yêu cầu cấp quyền truy cập...
+[11/29/2016 3:05:51 PM] Ngo Duy Tuyen: build.gradle là file config cho tool biết cách build bật tắt cờ, copy lib (file .so build sẵn hồi nãy) chỉ định version cho 1 số sdk của bên thứ ba,... nói chung chỉ cần sửa applicationId  là tên game của mình còn mấy cái khác ít khi chỉnh
+[11/29/2016 3:08:27 PM] Ngo Duy Tuyen: gradle.properties thì dùng để tên game + version của game + phiên bản Android build tool + nó cũng quy định hỗ trợ device có sdk thấp nhất là bao nhiêu
+[11/29/2016 3:39:44 PM] Lam Nguyen: AppConfig.UseFacebook = res.getBoolean(R.bool.use_facebook);
+[11/29/2016 3:39:56 PM] Lam Nguyen: may cai nay doc hong hieu tuyen oi
+[11/29/2016 3:41:18 PM] Ngo Duy Tuyen: cái này là nó đọc trong file strings.xml hồi nãy T nói đó mình muốn bật/tắt hay set id cho nó thì set cho cái id đó trong file string thôi
+[11/29/2016 3:54:43 PM] Lam Nguyen: string.xml nam dau sao tim wai ko thay
+[11/29/2016 3:55:10 PM] Ngo Duy Tuyen: một thư mục quan trọng nữa trong này là ...\_android\res\values
+file strings.xml trong này dùng để mình set id + bật tắt các feature bên android + ads cho từng game:)
+[11/29/2016 4:06:44 PM] Lam Nguyen: y la ko hieu may cai function do tu dau ra thoi ha
+[11/29/2016 4:06:55 PM] Lam Nguyen: sao tim ko thay
+[11/29/2016 4:07:47 PM] Lam Nguyen: R.bool.use_facebook
+[11/29/2016 4:08:32 PM] Lam Nguyen: cai nay no duoc tao khi nao voi lam sao de minh bit la dung R. hay la mac dinh no la nhu vay luon
+[11/29/2016 4:13:07 PM] Ngo Duy Tuyen: à cái này là đặc trưng của project android, sau khi build, nhưng thứ nằm trong thư mục res sẽ được để vào trong một package, đầu tiên mình sẽ gọi getresource để lấy tất cả resource của game, còn R. ... sẽ lưu trữ id của resource trong res/value string mình định nghĩa một id là use_facebook kiểu Boolean thì sau khi build nó sẽ được gán zô R.bool...
+[11/29/2016 4:13:48 PM] Lam Nguyen: uhm
+[11/29/2016 4:19:09 PM] Lam Nguyen: vay tom lai doi tuuong R la cua no tra ra cho minh dung ko
+[11/29/2016 4:19:18 PM] Lam Nguyen: chu dau phai tu minh khai bao
+[11/29/2016 4:25:21 PM] Lam Nguyen: ua vay tom lai la minh da co gan nhu day du moi thu cho viec port sang android roi dung ko
+[11/29/2016 4:25:50 PM] Lam Nguyen: chi can copy va thay doi mot so config cho phu hop voi moi project la run thoi
+[11/29/2016 4:26:47 PM] Lam Nguyen: ma hinh nhu cai nay moi la config build thoi
+[11/29/2016 4:27:19 PM] Lam Nguyen: con may cai config trong code nua dung ko
+[11/29/2016 4:28:08 PM] Ngo Duy Tuyen: đúng rồi Lâm, hiện tại đã gắn gần đủ feature cho android, còn mấy cái multiplayer thì chưa do chưa có project nào xài tới
+[11/29/2016 4:29:29 PM] Ngo Duy Tuyen: cái vụ namespace R thì nó sẽ đi kèm với packagegame của mình, cho nên mình chỉ cần khai báo package cho file đó là con của package pine.game.tengame là nó sẽ hiểu
+[11/29/2016 4:30:24 PM] Ngo Duy Tuyen: đúng rồi còn trong project game mình sẽ them 1 số thứ để thực hiện gọi các hàm bên java
+[11/29/2016 4:31:28 PM] Ngo Duy Tuyen: mấy project mới hiện tại thì đa phần những thứ cần gọi sẽ nằm trong gameplay/gameobject/CAsynctasks.h/cpp
+[11/29/2016 4:32:18 PM] Ngo Duy Tuyen: phần IAP thì android dung file gameplay/android_connector.cpp
+[11/29/2016 4:33:22 PM] Ngo Duy Tuyen: ads thì cần định nghĩa them 1 số hàm để thực hiện async
+[11/29/2016 4:34:51 PM] Ngo Duy Tuyen: các lệnh gọi từ code c++ qua java đều là async nên mình tạo cho nó 1 hệ thống riêng vs lại mỗi game có cách dung khác nhau nên các hàm trong 2 file trên sẽ có khác nhau chút ít
+[11/29/2016 4:54:13 PM] Ngo Duy Tuyen: giờ Lâm xem thử một lệnh gọi từ C++ qua java thử xem có thắc mắc chỗ nào ko nha
+[11/29/2016 4:54:42 PM] Lam Nguyen: oke
+[11/29/2016 5:28:10 PM] Lam Nguyen: ua tuyen oi
+[11/29/2016 5:28:24 PM] Lam Nguyen: cai config cua cai Android.mk ak
+[11/29/2016 5:28:37 PM] Lam Nguyen: co cach nao de minh include may cai file .cpp ko
+[11/29/2016 5:28:46 PM] Lam Nguyen: hay phai add bang tay tung cai vao
+[11/29/2016 5:29:04 PM] Ngo Duy Tuyen: phải add bang tay đó Lâm :)
+[11/29/2016 5:29:37 PM] Lam Nguyen: :-)
+[11/29/2016 5:29:44 PM] Lam Nguyen: :-0
+[11/29/2016 5:59:55 PM] Lam Nguyen: Item has been deleted from conversation history.
+[11/29/2016 6:00:00 PM] Lam Nguyen: tuyen oi coi dum cai loi nay di
+[11/29/2016 6:01:04 PM] Ngo Duy Tuyen: Lâm mở file local.properties xem đường dẫn đúng chưa nha
+[11/29/2016 6:01:47 PM] Lam Nguyen: cai do thi dung roi
+[11/29/2016 6:01:53 PM] Lam Nguyen: tai sua no dau tien ma
+[11/29/2016 6:01:54 PM] Lam Nguyen: :0
+[11/29/2016 6:03:51 PM] Ngo Duy Tuyen: vậy lâm thử zô thư mục lib của project đó xem có file unity3d_ad.aar ko?
+[11/29/2016 6:05:02 PM] Ngo Duy Tuyen: chỗ ../_android/libs đó nha
+[11/29/2016 6:05:50 PM] Lam Nguyen: cai libs tu dau ra
+[11/29/2016 6:05:56 PM] Lam Nguyen: minh phai copy qua ha
+[11/29/2016 6:07:10 PM] Ngo Duy Tuyen: ủa project politaire hình như có add rồi đó, L update về thử, lib đó mình tải trên mạng về đó, lên search implement unityads for android là nó sẽ có hướng dẫn
+[11/29/2016 6:08:20 PM] Lam Nguyen: moi update ko thay co Libs nao het
+[11/29/2016 6:08:21 PM] Lam Nguyen: :(
+[11/29/2016 6:08:28 PM] Lam Nguyen: co nho lon PJ ko
+[11/29/2016 6:09:09 PM] Ngo Duy Tuyen: đường dẫn svn của project đó của Lâm là gì?
+[11/29/2016 6:09:42 PM] Lam Nguyen: http://192.168.1.100/svn/PineGames/GameContents/PrivateBayFlat/trunk
+[11/29/2016 6:10:33 PM] Ngo Duy Tuyen: ủa privatebayflat mà
+[11/29/2016 6:10:42 PM] Lam Nguyen: dung roi
+[11/29/2016 6:10:52 PM] Ngo Duy Tuyen: zậy nó chưa có đâu Lâm, zô project khác copy qua
+[11/29/2016 6:10:57 PM] Lam Nguyen: Lam dang lam cho cai nay ma
+[11/29/2016 6:11:04 PM] Lam Nguyen: uhm
+[11/29/2016 6:11:05 PM] Lam Nguyen: =)
+[11/29/2016 6:11:14 PM] Ngo Duy Tuyen: sao trên máy Lâm lại ghi là politaire
+[11/29/2016 6:11:37 PM] Lam Nguyen: ah lam tao ten la politare ma
+[11/29/2016 6:12:23 PM] Ngo Duy Tuyen: vãi làm T tưởng game politaire
+[11/29/2016 6:13:12 PM] Lam Nguyen: thi la politare thit ma
+[11/29/2016 6:13:18 PM] Lam Nguyen: version khac
+[11/29/2016 6:13:31 PM] Ngo Duy Tuyen: ah
+[11/30/2016 8:58:54 AM] Lam Nguyen: tuyen oi ranh thi len choi ti nha
+[11/30/2016 8:59:03 AM] Lam Nguyen: ko thi xem dum cai loi nay
+[11/30/2016 8:59:04 AM] Lam Nguyen: ^^
+[11/30/2016 9:22:24 AM] Lam Nguyen: ua sao cai _android/assets no ko co data vay tuyen
+[11/30/2016 9:22:37 AM] Lam Nguyen: chay build deploy android roi ma
+[11/30/2016 9:23:41 AM] Ngo Duy Tuyen: xem lại coi cái file bat đó set đường dẫn đúng chưa Lâm, nếu game mới thường nó copy zô _android/res đó
+[11/30/2016 9:23:53 AM] Lam Nguyen: uhm
+[11/30/2016 9:25:09 AM] Lam Nguyen: ua sao thay cai ThisMas no cung copy vao _android/res ma
+[11/30/2016 9:26:50 AM] Ngo Duy Tuyen: đâu có Lâm xem biến ANDROID_RES bên chỗ file config.bat đó
+[11/30/2016 9:27:02 AM] Lam Nguyen: sax
+[11/30/2016 9:27:12 AM] Lam Nguyen: oke de coi lai
+[11/30/2016 9:29:21 AM] Lam Nguyen: no van dan vao cho _android\res\raw chu ko thay cai nao dan vao assets
+[11/30/2016 9:31:49 AM] Ngo Duy Tuyen: vãi Lâm đang coi bên trunk ThisXMas đúng không show log thử file config.bat xem nó đã update lên revision mới chưa vậy?
+Lam Nguyen
+[11/30/2016 9:46:34 AM] Lam Nguyen: y coi dum coi no dang bi j vay tuyen
+[11/30/2016 9:47:01 AM] Ngo Duy Tuyen: hình bị lỗi rồi Lâm
+Lam Nguyen
+[11/30/2016 9:50:10 AM] Ngo Duy Tuyen: Lâm include going hồi nãy tới thư mục gamecore á,
+[11/30/2016 9:58:08 AM] Lam Nguyen: van bi loi do ha
+[11/30/2016 9:58:10 AM] Lam Nguyen: :(
+[11/30/2016 10:32:08 AM] Lam Nguyen: error: undefined reference to 'Android_GetIAPDesNum'
+[11/30/2016 10:32:19 AM] Lam Nguyen: cai loi nay minh can lam gi voi no nak
+[11/30/2016 10:34:34 AM] Ngo Duy Tuyen: Lâm add them file android_connector.cpp vào game/gameplay rồi them nó vào file Android.mk rồi xem cách sử dung và tuy biến theo IAP của game Lâm đang làm
+[11/30/2016 10:34:51 AM] Lam Nguyen: oke tuyen
+[11/30/2016 10:57:45 AM] *** Quoc Nguyen added Lĩnh Lâm ***
+[11/30/2016 10:58:18 AM] Quoc Nguyen: cho Linh~ tham gia nua nhe
+[11/30/2016 10:58:46 AM] Lĩnh Lâm: hi Tuye63n
+[11/30/2016 10:58:56 AM] Lĩnh Lâm: hi Tuyển
+[11/30/2016 10:59:12 AM] Lĩnh Lâm: chỉ nc học hành thôi nha
+[11/30/2016 11:00:37 AM] Lam Nguyen: ua tuyen oi
+[11/30/2016 11:00:46 AM] Lam Nguyen: cai vu build design cho android ak
+[11/30/2016 11:01:00 AM] Ngo Duy Tuyen: a học thiệt hả a Lĩnh (cwl) , a đọc hết conversations rồi làm theo nha, có gì ko hiểu hỏi Lâm hỉ
+[11/30/2016 11:01:08 AM] Lam Nguyen: moi lay file tren server ve cai roi
+[11/30/2016 11:01:17 AM] Lam Nguyen: la build lai btthuong thoi dung ko
+[11/30/2016 11:01:25 AM] Lam Nguyen: hay co config j nua ko
+[11/30/2016 11:01:28 AM] Ngo Duy Tuyen: đúng rồi Lâm
+[11/30/2016 11:01:31 AM] Lam Nguyen: oke
+[11/30/2016 11:04:14 AM] Lam Nguyen: xem dum cai loi nay di tuyen
+[11/30/2016 11:04:53 AM] Lam Nguyen: http://192.168.1.100/svn/PineGames/GameContents/ThisXmas/trunk
+[11/30/2016 11:07:16 AM] Ngo Duy Tuyen:  add them PineVector3.cpp vs WaveFormat.cpp zô file Android.mk nha L
+[11/30/2016 11:07:31 AM] Ngo Duy Tuyen: còn cái trunk là gì vậy L?
+[11/30/2016 11:07:43 AM] Lam Nguyen: ak gui link cho quoc thoi
+[11/30/2016 11:07:45 AM] Lam Nguyen: ^^
+[11/30/2016 11:13:00 AM] Lam Nguyen: no van con 2 cai loi cung thang PineImage voi cai function string gi kia
+[11/30/2016 11:14:19 AM] Ngo Duy Tuyen: cái dưới thì add them lodepng.cpp cái trên thì xem thử có cái nào liên quan tới string chưa add ko nha lâm
+Lam Nguyen
+[11/30/2016 11:23:48 AM] Lam Nguyen: ua sao ben nay no lai bao loi nhu vay tuyen
+[11/30/2016 11:24:01 AM] Lam Nguyen: sao ben Thismas cung thay no co name do ma
+[11/30/2016 11:31:34 AM] Ngo Duy Tuyen: cái này lâm delete hết mấy file bên _android/res/raw đi nha, hồi nãy deploydata nhầm đó
+[11/30/2016 11:31:49 AM] Lam Nguyen: oh
+[11/30/2016 11:40:19 AM] Lam Nguyen: yk loi moi nak tuyen oi
+[11/30/2016 11:42:53 AM] Ngo Duy Tuyen: cái này L compare file strings.xml trong _android/res/values với ThisXMas thử xem có thiếu ko nha, mấy cái này tạm thời cứ bật cờ false hết chừng nào a Nghĩa kêu gắn với gửi id thì them zô thôi
+[11/30/2016 11:43:12 AM] Lam Nguyen: uhm
+[11/30/2016 11:43:20 AM] Lam Nguyen: tai hien tai cung dang de false het goy
+[11/30/2016 11:43:27 AM] Lam Nguyen: ma de coi lai coi co thieu gi ko
+[11/30/2016 11:44:42 AM] Ngo Duy Tuyen: :)  chắc là thiếu cái vungleads_id
+[11/30/2016 11:44:56 AM] Lam Nguyen: oh dung roi do
+[11/30/2016 11:44:59 AM] Lam Nguyen: ko co cai id
+[11/30/2016 11:45:02 AM] Lam Nguyen: vay lam sao day
+[11/30/2016 11:45:23 AM] Ngo Duy Tuyen: them zô đi Lâm ko có id thì để trống
+[11/30/2016 11:45:24 AM] Lam Nguyen: bo dai vo luon ha
+[11/30/2016 11:45:33 AM] Lam Nguyen: thi dang de trong do
+[11/30/2016 11:45:43 AM] Lam Nguyen: copy nguyen xi ben kia wa
+[11/30/2016 11:45:50 AM] Lam Nguyen: chi bat co false het thoi
+[11/30/2016 11:46:32 AM] Ngo Duy Tuyen: bật cờ false rồi thì set id là gì cũng được, chỉ là pữa nào có id của game thì nhớ bỏ zô thôi
+[11/30/2016 11:46:47 AM] Lam Nguyen: oh
+[11/30/2016 11:50:29 AM] Lam Nguyen: haha
+[11/30/2016 11:50:32 AM] Lam Nguyen: no van chui
+[11/30/2016 2:58:35 PM] Lĩnh Lâm: Tuyển ơi
+[11/30/2016 2:58:50 PM] Ngo Duy Tuyen: alo
+[11/30/2016 2:58:56 PM] Lĩnh Lâm: bye nha
+[11/30/2016 2:59:16 PM] *** Lĩnh Lâm has left ***
+[12/5/2016 10:33:20 AM] Lam Nguyen: ua tuyen oi
+[12/5/2016 10:34:02 AM] Lam Nguyen: ben android minh gan may cai achievement ntn za
+[12/5/2016 10:38:38 AM] Ngo Duy Tuyen: đầu tiên nhờ a Nghĩa tạo id, nếu achiement khai báo có trong file design thì mình them cho nó 1 cột id của google, xong thường thì mình unlock bang cách gọi zô  command async trong file CAsynctasks.h/cpp trong thư mục gameobject đó, Lâm tham khảo mấy game android có rồi thử, thisXMAS cũng có rồi nhưng mà hiện tại ko lấy id từ file design
+[12/5/2016 10:39:27 AM] Lam Nguyen: uhm
+[12/5/2016 10:39:47 AM] Lam Nguyen: ah ma ben nay no co phan biet chu IN chu thuong ko
+[12/5/2016 10:40:10 AM] Lam Nguyen: minh co can fai convert no sang chu thuong ko ak
+[12/5/2016 10:40:56 AM] Ngo Duy Tuyen: không cần convert L, cái id thì a Nghĩa gửi sao mình bỏ zô y chang vậy nghe Lâm
+[12/5/2016 10:41:07 AM] Lam Nguyen: oke
+[4/3/2017 3:29:21 PM] *** Ngo Duy Tuyen added Nghia Do Thanh (Piner) ***
+Nghia Do Thanh (Piner)
